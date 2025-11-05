@@ -1,10 +1,26 @@
-// Fade-in animations on scroll
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-});
+// Typing effect
+const typingText = document.querySelector('.typing');
+const text = typingText.textContent;
+typingText.textContent = '';
+let i = 0;
 
-document.querySelectorAll('.fade-in, .fade-in-delay, .fade-up, .slide-up').forEach(el => observer.observe(el));
+function type() {
+    if (i < text.length) {
+        typingText.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
+    }
+}
+window.addEventListener('load', type);
+
+// Scroll reveal
+const fadeEls = document.querySelectorAll('.fade-up');
+function revealOnScroll() {
+    const triggerBottom = window.innerHeight * 0.85;
+    fadeEls.forEach(el => {
+        const boxTop = el.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) el.classList.add('visible');
+    });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
