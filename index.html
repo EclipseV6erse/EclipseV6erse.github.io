@@ -1,150 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TriForce Studios | Creative Collective</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EclipseVerse | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e4e6d73b.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
+  <nav class="navbar">
+    <div class="logo">EclipseVerse</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#scripter">Scripter</a></li>
+      <li><a href="#ui">UI Designer</a></li>
+      <li><a href="#artist">Artist</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <!-- ========== HOME PAGE ========== -->
-  <div class="home-page" id="home-page">
-    <canvas class="particles-home" id="particles-home"></canvas>
-    
+  <section id="home" class="section home">
     <div class="home-content">
-      <h1 class="main-logo">TriForce Studios</h1>
-      <p class="tagline">WHERE CREATIVITY MEETS EXPERTISE</p>
-      
-      <div class="role-selector">
-        <div class="role-card" data-role="scripter">
-          <div class="role-icon">💻</div>
-          <h3 class="role-title">Scripter</h3>
-          <p class="role-desc">Gameplay systems, AI, UI scripting and optimization for Roblox.</p>
-        </div>
+      <h1>Welcome to <span>EclipseVerse</span></h1>
+      <p>We’re a creative trio bringing ideas to life — through code, design, and art.</p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+    <div class="scroll-hint">↓ Scroll to Explore ↓</div>
+  </section>
 
-        <div class="role-card" data-role="designer">
-          <div class="role-icon">🎨</div>
-          <h3 class="role-title">UI Designer</h3>
-          <p class="role-desc">Modern UI design for menus, inventories, and shops with polish.</p>
-        </div>
-
-        <div class="role-card" data-role="artist">
-          <div class="role-icon">🖌️</div>
-          <h3 class="role-title">GFX Artist</h3>
-          <p class="role-desc">High-quality thumbnails, icons, and 3D renders for games.</p>
-        </div>
+  <section id="scripter" class="section showcase">
+    <h2>Scripter Showcase</h2>
+    <p>Scripts and systems made in Roblox Studio.</p>
+    <div class="media-grid">
+      <div class="media-card">
+        <video controls src="videos/npc-system.mp4"></video>
+        <h3>NPC Combat System</h3>
+      </div>
+      <div class="media-card">
+        <video controls src="videos/bow-shop.mp4"></video>
+        <h3>Bow Shop UI & Logic</h3>
+      </div>
+      <div class="media-card">
+        <img src="images/ai-preview.png" alt="AI System Preview">
+        <h3>Animal AI System</h3>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ========== SCRIPTER PORTFOLIO ========== -->
-  <div class="portfolio-page scripter-page" id="scripter-portfolio">
-    <nav class="portfolio-nav">
-      <button class="back-btn" onclick="goHome()">← Back</button>
-      <div class="nav-name">Eclipse (Scripter)</div>
-      <div></div>
-    </nav>
-
-    <section class="portfolio-hero">
-      <div class="hero-content-inner">
-        <div class="profile-img">💻</div>
-        <h1 class="hero-name">Eclipse</h1>
-        <h2 class="hero-role">Roblox Scripter</h2>
-        <p class="hero-bio">Specializing in game systems, AI, and performance-optimized mechanics for immersive gameplay.</p>
-        <div class="cta-buttons">
-          <button class="cta-btn" onclick="copyDiscord('eclipse#0001')">Discord: eclipse#0001</button>
-          <a class="cta-btn" href="mailto:eclipse@example.com">eclipse@example.com</a>
-        </div>
+  <section id="ui" class="section showcase">
+    <h2>UI Designer Showcase</h2>
+    <p>Modern, stylish user interfaces built for immersion.</p>
+    <div class="media-grid">
+      <div class="media-card">
+        <img src="images/bow-shop-ui.png" alt="Bow Shop UI">
+        <h3>Bow Shop Interface</h3>
       </div>
-    </section>
-  </div>
-
-  <!-- ========== DESIGNER PORTFOLIO ========== -->
-  <div class="portfolio-page designer-page" id="designer-portfolio">
-    <nav class="portfolio-nav">
-      <button class="back-btn" onclick="goHome()">← Back</button>
-      <div class="nav-name">Nova (UI Designer)</div>
-      <div></div>
-    </nav>
-
-    <section class="portfolio-hero">
-      <div class="hero-content-inner">
-        <div class="profile-img">🎨</div>
-        <h1 class="hero-name">Nova</h1>
-        <h2 class="hero-role">UI Designer</h2>
-        <p class="hero-bio">Crafting immersive and polished interfaces that make every interaction delightful.</p>
-        <div class="cta-buttons">
-          <button class="cta-btn" onclick="copyDiscord('nova_ui#2222')">Discord: nova_ui#2222</button>
-          <a class="cta-btn" href="mailto:nova@example.com">nova@example.com</a>
-        </div>
+      <div class="media-card">
+        <img src="images/inventory-ui.png" alt="Inventory UI">
+        <h3>Suitcase Inventory UI</h3>
       </div>
-    </section>
-  </div>
-
-  <!-- ========== ARTIST PORTFOLIO ========== -->
-  <div class="portfolio-page artist-page" id="artist-portfolio">
-    <nav class="portfolio-nav">
-      <button class="back-btn" onclick="goHome()">← Back</button>
-      <div class="nav-name">Rayn (GFX Artist)</div>
-      <div></div>
-    </nav>
-
-    <section class="portfolio-hero">
-      <div class="hero-content-inner">
-        <div class="profile-img">✨</div>
-        <h1 class="hero-name">Rayn</h1>
-        <h2 class="hero-role">GFX & 3D Artist</h2>
-        <p class="hero-bio">Creating visually stunning renders, environments, and promotional artwork.</p>
-        <div class="cta-buttons">
-          <button class="cta-btn" onclick="copyDiscord('rayn_gfx#3333')">Discord: rayn_gfx#3333</button>
-          <a class="cta-btn" href="mailto:rayn@example.com">rayn@example.com</a>
-        </div>
+      <div class="media-card">
+        <video controls src="videos/mainmenu.mp4"></video>
+        <h3>Animated Main Menu</h3>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <div class="toast" id="toast">Copied to clipboard!</div>
+  <section id="artist" class="section showcase">
+    <h2>2D Artist Showcase</h2>
+    <p>Concept art, icons, and environment sketches.</p>
+    <div class="media-grid">
+      <div class="media-card">
+        <img src="images/character-concept.png" alt="Character Concept Art">
+        <h3>Character Concept</h3>
+      </div>
+      <div class="media-card">
+        <img src="images/icon-pack.png" alt="Icon Pack">
+        <h3>Icon Pack Design</h3>
+      </div>
+      <div class="media-card">
+        <img src="images/scene-art.png" alt="Scene Art">
+        <h3>Environment Artwork</h3>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    const roleCards = document.querySelectorAll(".role-card");
-    const homePage = document.getElementById("home-page");
-    const toast = document.getElementById("toast");
+  <section id="contact" class="section contact">
+    <h2>Contact Us</h2>
+    <p>Interested in working together? Send us a message!</p>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
 
-    roleCards.forEach(card => {
-      card.addEventListener("click", () => {
-        const role = card.getAttribute("data-role");
-        showPortfolio(role);
-      });
-    });
+    <div class="socials">
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </section>
 
-    function showPortfolio(role) {
-      homePage.style.display = "none";
-      const portfolio = document.getElementById(`${role}-portfolio`);
-      portfolio.classList.add("active");
-      window.scrollTo(0, 0);
-    }
-
-    function goHome() {
-      document.querySelectorAll(".portfolio-page").forEach(p => p.classList.remove("active"));
-      homePage.style.display = "flex";
-    }
-
-    function copyDiscord(tag) {
-      navigator.clipboard.writeText(tag).then(() => {
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 2000);
-      });
-    }
-
-    // Navbar scroll effect
-    window.addEventListener("scroll", () => {
-      document.querySelectorAll(".portfolio-nav").forEach(nav => {
-        if (window.scrollY > 20) nav.classList.add("scrolled");
-        else nav.classList.remove("scrolled");
-      });
-    });
-  </script>
+  <footer>
+    <p>© 2025 EclipseVerse. All rights reserved.</p>
+  </footer>
 </body>
 </html>
