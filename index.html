@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>EclipseVerse | Roblox Programmer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>TriForce Studios | Creative Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ---------- Fonts & base ---------- */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,994 +19,797 @@
     
     body {
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(180deg, #07000a 0%, #040006 100%);
-      color: #efeaf8;
+      background: #000;
+      color: #fff;
       overflow-x: hidden;
     }
 
-    /* ---------- NAV ---------- */
-    .navbar {
+    /* ========== HOME PAGE ========== */
+    .home-page {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0a0015 0%, #1a0030 50%, #0f001a 100%);
+      overflow: hidden;
+    }
+
+    .home-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1), transparent 40%);
+      filter: blur(60px);
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+
+    .particles-home {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .home-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 1200px;
+    }
+
+    .main-logo {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #a855f7, #6366f1, #a855f7);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      animation: gradientShift 3s ease infinite;
+      text-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #c4b5fd;
+      margin-bottom: 50px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+
+    .role-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .role-card {
+      position: relative;
+      padding: 50px 30px;
+      background: rgba(15, 5, 30, 0.6);
+      border: 2px solid rgba(168, 85, 247, 0.2);
+      border-radius: 24px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .role-card:nth-child(1) { animation-delay: 0.4s; }
+    .role-card:nth-child(2) { animation-delay: 0.6s; }
+    .role-card:nth-child(3) { animation-delay: 0.8s; }
+
+    .role-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .role-card::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 24px;
+      padding: 2px;
+      background: linear-gradient(135deg, transparent, rgba(168, 85, 247, 0.6), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .role-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(168, 85, 247, 0.6);
+      box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+    }
+
+    .role-card:hover::before,
+    .role-card:hover::after {
+      opacity: 1;
+    }
+
+    .role-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 20px currentColor);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .role-card:nth-child(1) .role-icon { animation-delay: 0s; }
+    .role-card:nth-child(2) .role-icon { animation-delay: 0.5s; }
+    .role-card:nth-child(3) .role-icon { animation-delay: 1s; }
+
+    .role-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .role-desc {
+      color: #a78bfa;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ========== PORTFOLIO PAGES ========== */
+    .portfolio-page {
+      display: none;
+      min-height: 100vh;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .portfolio-page.active {
+      display: block;
+      animation: pageSlideIn 0.6s ease forwards;
+    }
+
+    /* Navbar for portfolio pages */
+    .portfolio-nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 999;
+      padding: 16px 3rem;
+      background: rgba(10, 5, 20, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 3.5rem;
-      background: linear-gradient(180deg, rgba(9, 3, 15, 0.75), rgba(9, 3, 15, 0.25));
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(160, 90, 255, 0.08);
       transition: all 0.3s ease;
-    }
-    
-    .navbar.scrolled {
-      padding: 12px 3.5rem;
-      background: linear-gradient(180deg, rgba(9, 3, 15, 0.95), rgba(9, 3, 15, 0.85));
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    .logo {
-      color: #c9a8ff;
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-size: 1.3rem;
-      text-shadow: 0 0 20px rgba(181, 128, 255, 0.4);
-      transition: all 0.3s ease;
-    }
-    
-    .logo:hover {
-      text-shadow: 0 0 30px rgba(181, 128, 255, 0.6);
-      transform: scale(1.05);
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-    
-    .nav-links a {
-      text-decoration: none;
-      color: #eae7f6;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-links a::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #b580ff, #6fd0ff);
-      transform: translateX(-50%);
-      transition: width 0.3s ease;
-    }
-    
-    .nav-links a:hover {
-      color: #fff;
-    }
-    
-    .nav-links a:hover::before {
-      width: 80%;
     }
 
-    /* ---------- HERO ---------- */
-    .hero {
+    .portfolio-nav.scrolled {
+      padding: 12px 3rem;
+      background: rgba(10, 5, 20, 0.95);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-btn {
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(-4px);
+    }
+
+    .nav-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    /* Hero sections for each portfolio */
+    .portfolio-hero {
       position: relative;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 1.5rem;
+      padding: 100px 20px 60px;
       overflow: hidden;
-      background: linear-gradient(180deg, #150018 0%, #060009 65%);
     }
-    
-    .hero::before {
+
+    .portfolio-hero::before {
       content: "";
       position: absolute;
-      inset: -10% -5% auto -5%;
-      height: 70%;
-      background: 
-        radial-gradient(50% 40% at 15% 25%, rgba(181, 128, 255, 0.12), transparent 20%),
-        radial-gradient(40% 30% at 85% 80%, rgba(111, 208, 255, 0.06), transparent 18%);
-      filter: blur(40px);
-      mix-blend-mode: screen;
-      z-index: 0;
-      animation: slowFloat 12s ease-in-out infinite;
+      inset: 0;
+      opacity: 0.6;
+      filter: blur(60px);
     }
-    
-    .hero-content {
+
+    .hero-content-inner {
       position: relative;
-      z-index: 3;
-      max-width: 980px;
-      padding: 30px;
+      z-index: 10;
+      max-width: 900px;
     }
-    
-    /* Orb wrap */
-    .orb-wrap {
+
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
+      justify-content: center;
+      font-size: 4rem;
+      animation: profilePulse 3s ease-in-out infinite;
     }
-    
-    .orb {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      border: none;
-      cursor: pointer;
-      background: conic-gradient(from 180deg at 50% 50%, rgba(172, 86, 255, 0.24), rgba(130, 60, 255, 0.16));
-      box-shadow: 
-        0 8px 40px rgba(125, 80, 255, 0.25),
-        inset 0 -8px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .hero-name {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
     }
-    
-    .orb::before, .orb::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      inset: -12px;
-      z-index: -1;
-      filter: blur(30px);
-      opacity: 0.7;
-      transition: all 0.6s ease;
-    }
-    
-    .orb::before {
-      background: radial-gradient(circle at 30% 35%, rgba(181, 128, 255, 0.4), transparent 40%);
-    }
-    
-    .orb::after {
-      background: radial-gradient(circle at 70% 65%, rgba(111, 208, 255, 0.15), transparent 35%);
-      transform: scale(1.15);
-    }
-    
-    .orb:hover {
-      transform: scale(1.1);
-      box-shadow: 
-        0 12px 50px rgba(125, 80, 255, 0.4),
-        inset 0 -8px 40px rgba(0, 0, 0, 0.3);
-    }
-    
-    .orb:active {
-      transform: scale(1.05);
-    }
-    
-    .orb-label {
-      font-size: 0.85rem;
-      color: #e9e2ff;
+
+    .hero-role {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 500;
+      margin-bottom: 24px;
       opacity: 0.9;
-      font-weight: 500;
     }
 
-    /* name & typing */
-    .hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3.6rem);
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-    
-    .highlight {
-      color: #f0e9ff;
-      text-shadow: 0 8px 30px rgba(160, 90, 255, 0.3);
-      background: linear-gradient(135deg, #b580ff, #6fd0ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .typing {
-      color: #d8cfe9;
-      font-weight: 500;
-      margin-bottom: 20px;
-      min-height: 32px;
-      font-size: 1.2rem;
-    }
-    
-    .typing::after {
-      content: "|";
-      animation: blink 1s infinite;
-      margin-left: 2px;
+    .hero-bio {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      opacity: 0.8;
     }
 
-    /* paragraph & CTAs */
-    .hero p {
-      color: #d6cfeb;
-      max-width: 760px;
-      margin: 0 auto 24px;
-      line-height: 1.7;
-      font-size: 1.05rem;
-    }
-    
-    .cta-row {
+    .cta-buttons {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 16px;
     }
-    
-    .btn {
-      display: inline-block;
-      padding: 14px 28px;
-      border-radius: 999px;
-      text-decoration: none;
+
+    .cta-btn {
+      padding: 14px 32px;
+      border-radius: 50px;
       font-weight: 600;
-      background: linear-gradient(135deg, #b580ff, #6fd0ff);
-      color: #070509;
-      border: none;
+      font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 12px 30px rgba(125, 80, 255, 0.2);
+      border: none;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
-    
-    .btn::before {
+
+    .cta-btn::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+      background: rgba(255, 255, 255, 0.2);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 55px rgba(125, 80, 255, 0.3);
-    }
-    
-    .btn:hover::before {
+
+    .cta-btn:hover::before {
       opacity: 1;
     }
-    
-    .btn:active {
-      transform: translateY(-2px);
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
     }
 
-    /* Particles canvas */
-    .particles {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      opacity: 0.4;
-    }
-
-    /* ---------- sections ---------- */
-    .section {
+    /* Portfolio sections */
+    .portfolio-section {
+      padding: 80px 6%;
       position: relative;
-      padding: clamp(70px, 10vw, 130px) 6%;
+    }
+
+    .section-title-main {
       text-align: center;
-      z-index: 1;
-    }
-    
-    .blend-top {
-      margin-top: -6px;
-      padding-top: 80px;
-    }
-    
-    .section-title {
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      color: #d7c7ff;
-      margin-bottom: 24px;
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
+      margin-bottom: 60px;
+      position: relative;
     }
-    
-    .section-title::after {
+
+    .section-title-main::after {
       content: "";
       display: block;
-      width: 90px;
+      width: 100px;
       height: 4px;
-      margin: 14px auto 0;
-      background: linear-gradient(90deg, #b580ff, #6fd0ff);
-      border-radius: 3px;
+      margin: 20px auto 0;
+      border-radius: 2px;
     }
 
-    /* cards/grids */
-    .work-grid {
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .work-item {
+      position: relative;
+      background: rgba(20, 10, 30, 0.4);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.5s ease;
+    }
+
+    .work-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .work-media {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .work-info {
+      padding: 24px;
+    }
+
+    .work-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .work-description {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* Services section */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       margin-top: 40px;
     }
-    
-    .work-card {
-      background: linear-gradient(180deg, rgba(20, 6, 40, 0.5), rgba(10, 3, 18, 0.5));
-      padding: 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(140, 95, 255, 0.08);
-      box-shadow: 0 14px 40px rgba(8, 3, 20, 0.6);
+
+    .service-item {
+      padding: 40px 30px;
+      background: rgba(20, 10, 30, 0.4);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .work-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(181, 128, 255, 0.05), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    
-    .work-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(140, 95, 255, 0.15);
-      box-shadow: 0 20px 60px rgba(125, 80, 255, 0.25);
-    }
-    
-    .work-card:hover::before {
-      opacity: 1;
-    }
-    
-    .work-card video {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 14px;
-      border: 1px solid rgba(140, 95, 255, 0.1);
-    }
-    
-    .work-card h3 {
-      color: #efe7ff;
-      margin-bottom: 8px;
-      font-size: 1.2rem;
-    }
-    
-    .work-card p {
-      color: #d0c5e8;
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    .service-cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 30px;
-    }
-    
-    .service-card {
-      width: 280px;
-      padding: 28px;
-      border-radius: 16px;
-      background: linear-gradient(180deg, rgba(25, 6, 60, 0.4), rgba(9, 2, 18, 0.4));
-      border: 1px solid rgba(140, 95, 255, 0.08);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(181, 128, 255, 0.08), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(140, 95, 255, 0.15);
-      box-shadow: 0 16px 50px rgba(125, 80, 255, 0.2);
-    }
-    
-    .service-card:hover::before {
-      opacity: 1;
-    }
-    
-    .service-card h3 {
-      color: #efe7ff;
-      margin-bottom: 12px;
-      font-size: 1.25rem;
-    }
-    
-    .service-card p {
-      color: #d0c5e8;
-      line-height: 1.6;
-    }
-
-    /* contact */
-    .contact p {
-      color: #d9ceef;
-      margin-bottom: 20px;
-      font-size: 1.05rem;
-    }
-
-    /* footer */
-    footer {
       text-align: center;
-      padding: 30px;
-      background: rgba(5, 2, 10, 0.6);
-      border-top: 1px solid rgba(140, 95, 255, 0.06);
-      color: #b8afd0;
-      font-size: 0.9rem;
     }
 
-    /* toast */
+    .service-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 20px currentColor);
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    /* Contact section */
+    .contact-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-text {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      line-height: 1.8;
+    }
+
+    /* Toast */
     .toast {
       position: fixed;
-      right: 24px;
-      bottom: 24px;
-      background: linear-gradient(135deg, #1a0a2e, #0f051d);
-      color: #fff;
-      padding: 14px 20px;
+      bottom: 30px;
+      right: 30px;
+      padding: 16px 24px;
+      background: rgba(20, 10, 30, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      box-shadow: 0 12px 40px rgba(10, 3, 20, 0.7);
-      border: 1px solid rgba(140, 95, 255, 0.2);
+      color: #fff;
+      font-weight: 600;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.3s ease;
-      z-index: 1300;
-      font-weight: 500;
+      z-index: 10000;
+      backdrop-filter: blur(12px);
     }
-    
+
     .toast.show {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* fade-up reveal */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.9s cubic-bezier(0.2, 0.9, 0.2, 1);
-      will-change: transform, opacity;
-    }
-    
-    .fade-up.visible {
-      opacity: 1;
-      transform: none;
+    /* ========== SCRIPTER THEME (VIOLET) ========== */
+    .scripter-page {
+      background: linear-gradient(180deg, #0f0a1e 0%, #1a0f2e 50%, #0a0515 100%);
     }
 
-    /* hamburger */
-    .hamburger {
-      display: none;
-      width: 30px;
-      height: 30px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      z-index: 1001;
-    }
-    
-    .hamburger span,
-    .hamburger span::before,
-    .hamburger span::after {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #e9e6ff;
-      position: absolute;
-      transition: all 0.3s ease;
-    }
-    
-    .hamburger span {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-    .hamburger span::before {
-      content: "";
-      top: -8px;
-    }
-    
-    .hamburger span::after {
-      content: "";
-      top: 8px;
-    }
-    
-    .hamburger.active span {
-      background: transparent;
-    }
-    
-    .hamburger.active span::before {
-      top: 0;
-      transform: rotate(45deg);
-    }
-    
-    .hamburger.active span::after {
-      top: 0;
-      transform: rotate(-45deg);
+    .scripter-page .portfolio-hero::before {
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(147, 51, 234, 0.2), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(99, 102, 241, 0.15), transparent 50%);
     }
 
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 260px;
-      height: 100vh;
-      background: linear-gradient(180deg, rgba(15, 5, 25, 0.98), rgba(8, 2, 15, 0.98));
-      backdrop-filter: blur(12px);
-      padding: 80px 30px 30px;
-      z-index: 1000;
-      transition: right 0.4s ease;
-      box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
+    .scripter-page .hero-name {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    
-    .mobile-menu.open {
-      right: 0;
+
+    .scripter-page .hero-role {
+      color: #c4b5fd;
     }
-    
-    .mobile-menu a {
-      display: block;
-      padding: 12px 0;
-      color: #e9e6ff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(140, 95, 255, 0.1);
-    }
-    
-    .mobile-menu a:hover {
+
+    .scripter-page .cta-btn {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
       color: #fff;
-      padding-left: 8px;
     }
 
-    /* keyframes */
-    @keyframes slowFloat {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(12px); }
-      100% { transform: translateY(0); }
-    }
-    
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
+    .scripter-page .cta-btn:hover {
+      box-shadow: 0 20px 50px rgba(168, 85, 247, 0.4);
     }
 
-    /* responsive */
-    @media (max-width: 900px) {
-      .navbar {
+    .scripter-page .section-title-main::after {
+      background: linear-gradient(90deg, #a855f7, #6366f1);
+    }
+
+    .scripter-page .work-item:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+    }
+
+    .scripter-page .service-item:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      box-shadow: 0 16px 50px rgba(168, 85, 247, 0.3);
+    }
+
+    /* ========== UI DESIGNER THEME (RED) ========== */
+    .designer-page {
+      background: linear-gradient(180deg, #1a0505 0%, #2e0a0a 50%, #150303 100%);
+    }
+
+    .designer-page .portfolio-hero::before {
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(239, 68, 68, 0.2), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(251, 146, 60, 0.15), transparent 50%);
+    }
+
+    .designer-page .hero-name {
+      background: linear-gradient(135deg, #ef4444, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .designer-page .hero-role {
+      color: #fca5a5;
+    }
+
+    .designer-page .cta-btn {
+      background: linear-gradient(135deg, #ef4444, #fb923c);
+      color: #fff;
+    }
+
+    .designer-page .cta-btn:hover {
+      box-shadow: 0 20px 50px rgba(239, 68, 68, 0.4);
+    }
+
+    .designer-page .section-title-main::after {
+      background: linear-gradient(90deg, #ef4444, #fb923c);
+    }
+
+    .designer-page .work-item:hover {
+      border-color: rgba(239, 68, 68, 0.4);
+      box-shadow: 0 20px 60px rgba(239, 68, 68, 0.3);
+    }
+
+    .designer-page .service-item:hover {
+      border-color: rgba(239, 68, 68, 0.4);
+      box-shadow: 0 16px 50px rgba(239, 68, 68, 0.3);
+    }
+
+    /* ========== ARTIST/GFX THEME (DARK TEAL) ========== */
+    .artist-page {
+      background: linear-gradient(180deg, #021212 0%, #0a2626 50%, #031515 100%);
+    }
+
+    .artist-page .portfolio-hero::before {
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(20, 184, 166, 0.2), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(6, 182, 212, 0.15), transparent 50%);
+    }
+
+    .artist-page .hero-name {
+      background: linear-gradient(135deg, #14b8a6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .artist-page .hero-role {
+      color: #5eead4;
+    }
+
+    .artist-page .cta-btn {
+      background: linear-gradient(135deg, #14b8a6, #06b6d4);
+      color: #fff;
+    }
+
+    .artist-page .cta-btn:hover {
+      box-shadow: 0 20px 50px rgba(20, 184, 166, 0.4);
+    }
+
+    .artist-page .section-title-main::after {
+      background: linear-gradient(90deg, #14b8a6, #06b6d4);
+    }
+
+    .artist-page .work-item:hover {
+      border-color: rgba(20, 184, 166, 0.4);
+      box-shadow: 0 20px 60px rgba(20, 184, 166, 0.3);
+    }
+
+    .artist-page .service-item:hover {
+      border-color: rgba(20, 184, 166, 0.4);
+      box-shadow: 0 16px 50px rgba(20, 184, 166, 0.3);
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes pageSlideIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes profilePulse {
+      0%, 100% { box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3); }
+      50% { box-shadow: 0 20px 80px rgba(168, 85, 247, 0.5); }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .portfolio-nav {
         padding: 14px 1.5rem;
       }
-      
-      .nav-links {
-        display: none;
+
+      .role-selector {
+        grid-template-columns: 1fr;
+        padding: 10px;
       }
-      
-      .hamburger {
-        display: block;
+
+      .works-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
       }
-      
-      .mobile-menu {
-        display: block;
+
+      .cta-buttons {
+        flex-direction: column;
       }
-      
-      .orb {
-        width: 75px;
-        height: 75px;
-      }
-      
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .cta-row {
-        gap: 12px;
-      }
-    }
-    
-    @media (max-width: 520px) {
-      .orb {
-        width: 65px;
-        height: 65px;
-      }
-      
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero p {
-        font-size: 0.95rem;
-      }
-      
-      .work-grid {
-        gap: 20px;
-      }
-      
-      .service-card {
+
+      .cta-btn {
         width: 100%;
-      }
-      
-      .btn {
-        padding: 12px 24px;
-        font-size: 0.95rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">EclipseVerse</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#works">Works</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger">
-      <span></span>
-    </button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#works">Works</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+  <!-- ========== HOME PAGE ========== -->
+  <div class="home-page" id="home-page">
+    <canvas class="particles-home" id="particles-home"></canvas>
+    
+    <div class="home-content">
+      <h1 class="main-logo">TriForce Studios</h1>
+      <p class="tagline">WHERE CREATIVITY MEETS EXPERTISE</p>
+      
+      <div class="role-selector">
+        <div class="role-card" data-role="scripter">
+          <div class="role-icon">⚡</div>
+          <h3 class="role-title">Scripter</h3>
+          <p class="role-desc">Expert in Lua(u) programming, game mechanics, AI systems, and Roblox development</p>
+        </div>
+        
+        <div class="role-card" data-role="designer">
+          <div class="role-icon">🎨</div>
+          <h3 class="role-title">UI Designer</h3>
+          <p class="role-desc">Crafting beautiful, intuitive interfaces with smooth animations and modern design</p>
+        </div>
+        
+        <div class="role-card" data-role="artist">
+          <div class="role-icon">✨</div>
+          <h3 class="role-title">Artist/GFX</h3>
+          <p class="role-desc">Creating stunning graphics, thumbnails, and visual art that brings ideas to life</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-content fade-up">
+  <!-- ========== SCRIPTER PORTFOLIO ========== -->
+  <div class="portfolio-page scripter-page" id="scripter-portfolio">
+    <nav class="portfolio-nav">
+      <button class="back-btn" onclick="goHome()">← Back</button>
+      <div class="nav-name">EclipseVerse</div>
+      <div></div>
+    </nav>
 
-      <!-- Glowing Discord Orb -->
-      <div class="orb-wrap">
-        <button class="orb" id="discord-orb" aria-label="Copy Discord tag">
-          <svg viewBox="0 0 245 240" width="44" height="44" aria-hidden="true">
-            <g fill="none" fill-rule="evenodd">
-              <path d="M104.4 104.3c-5.7 0-10.2 4.9-10.2 10.9 0 6 4.6 10.9 10.2 10.9 5.7 0 10.2-4.9 10.2-10.9 0-6-4.6-10.9-10.2-10.9zm36.2 0c-5.7 0-10.2 4.9-10.2 10.9 0 6 4.6 10.9 10.2 10.9 5.7 0 10.2-4.9 10.2-10.9 0-6-4.6-10.9-10.2-10.9z" fill="#fff"></path>
-              <path d="M189.5 20s-10.5 18-38.5 32.5c0 0-8.5 53-48.5 53s-48.5-53-48.5-53C66.5 38 56 20 56 20 31 29 20 63 20 63c82 47 205 47 245 0 0 0-11-34-75.5-43z" fill="#000" opacity="0.02"></path>
-            </g>
-          </svg>
-        </button>
-        <div class="orb-label">Discord</div>
+    <section class="portfolio-hero">
+      <div class="hero-content-inner">
+        <div class="profile-img">💻</div>
+        <h1 class="hero-name">EclipseVerse</h1>
+        <h2 class="hero-role">Roblox Scripter & System Designer</h2>
+        <p class="hero-bio">
+          16 years old from India with 2 years of programming experience. I learned Lua(u) out of curiosity — by experimenting and creating. I build polished Roblox systems: AI, UI frameworks, and interactive mechanics that make games feel alive.
+        </p>
+        <div class="cta-buttons">
+          <button class="cta-btn" onclick="copyDiscord('eclipse_41934')">Contact on Discord</button>
+          <a class="cta-btn" href="mailto:eclipsedev47@gmail.com">Send Email</a>
+        </div>
       </div>
+    </section>
 
-      <h1>Hello, I'm <span class="highlight">EclipseVerse</span></h1>
-      <h2 class="typing" aria-live="polite"></h2>
-
-      <p>I'm 16 years old from India with 2 years of programming experience.<br>
-         I learned Lua(u) out of curiosity — by experimenting and creating.</p>
-
-      <div class="cta-row">
-        <a class="btn email-btn" href="mailto:eclipsedev47@gmail.com" aria-label="Send email">Send Email</a>
-        <button class="btn discord-btn" id="discord-btn" aria-label="Copy Discord tag">Contact on Discord</button>
-      </div>
-
-    </div>
-
-    <canvas class="particles" id="particles" aria-hidden="true"></canvas>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about section blend-top fade-up">
-    <h2 class="section-title">About Me</h2>
-    <p>I build polished Roblox systems: AI, UI frameworks, and interactive mechanics that make games feel alive.</p>
-  </section>
-
-  <!-- Works -->
-  <section id="works" class="works section fade-up">
-    <h2 class="section-title">My Works</h2>
-    <div class="work-grid">
-      <div class="work-card fade-up">
-        <video src="your-video1.mp4" controls muted></video>
-        <h3>Animal AI System</h3>
-        <p>Minecraft-style animal AI built in Roblox using PathfindingService and custom animations.</p>
-      </div>
-      <div class="work-card fade-up">
-        <video src="your-video2.mp4" controls muted></video>
-        <h3>Bow Shop UI</h3>
-        <p>Animated bow shop UI system with camera transitions and tweened purchase logic.</p>
-      </div>
-      <div class="work-card fade-up">
-        <video src="your-video3.mp4" controls muted></video>
-        <h3>NPC Interaction System</h3>
-        <p>Dialogue & interaction system with typing effects and camera focus transitions.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="services section blend-top fade-up">
-    <h2 class="section-title">Services</h2>
-    <div class="service-cards">
-      <div class="service-card fade-up">
-        <h3>Roblox Scripting</h3>
-        <p>AI, Pathfinding, and game mechanics.</p>
-      </div>
-      <div class="service-card fade-up">
-        <h3>UI & UX</h3>
-        <p>Polished UIs with tweened interactions and responsive design.</p>
-      </div>
-      <div class="service-card fade-up">
-        <h3>System Design</h3>
-        <p>Inventory, progression, and event-driven frameworks.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact section fade-up">
-    <h2 class="section-title">Got Any Questions?</h2>
-    <p>Prefer Discord or email? Both work — choose whichever you like.</p>
-    <div class="cta-row">
-      <a class="btn email-btn" href="mailto:eclipsedev47@gmail.com">Send Email</a>
-      <button class="btn discord-btn" id="discord-btn-2">Contact on Discord</button>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 EclipseVerse | All rights reserved.</p>
-  </footer>
-
-  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-  <script>
-    // Safe selectors
-    const $ = s => document.querySelector(s);
-    const $$ = s => Array.from(document.querySelectorAll(s));
-
-    // ---------- Typewriter effect ----------
-    (function typewriter() {
-      const el = $('.typing');
-      if (!el) return;
-      
-      const phrases = [
-        "Lua(u) & Roblox Programmer",
-        "Scripter & System Designer",
-        "UI & Game Systems"
-      ];
-      
-      let phraseIndex = 0;
-      const wait = ms => new Promise(res => setTimeout(res, ms));
-      
-      (async function loop() {
-        while (true) {
-          const word = phrases[phraseIndex];
-          
-          // Type
-          for (let i = 0; i <= word.length; i++) {
-            el.textContent = word.slice(0, i);
-            await wait(70);
-          }
-          await wait(1000);
-          
-          // Delete
-          for (let i = word.length; i >= 0; i--) {
-            el.textContent = word.slice(0, i);
-            await wait(35);
-          }
-          await wait(300);
-          
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-        }
-      })();
-    })();
-
-    // ---------- Scroll reveal ----------
-    (function revealOnScroll() {
-      const items = $$('.fade-up');
-      if (!items.length) return;
-      
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      
-      items.forEach(it => io.observe(it));
-    })();
-
-    // ---------- Navbar scroll effect ----------
-    window.addEventListener('scroll', () => {
-      const nav = $('.navbar');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // ---------- Discord orb & copy ----------
-    (function discordOrb() {
-      const orb = $('#discord-orb');
-      const discordButtons = $$('.discord-btn');
-      const desiredTag = 'eclipse_41934';
-      
-      if (!orb) return;
-      
-      // Flicker effect
-      setInterval(() => {
-        const intensity = (Math.random() * 0.45 + 0.55).toFixed(2);
-        orb.style.filter = `brightness(${intensity})`;
-      }, 2200 + Math.random() * 1600);
-      
-      // Copy function
-      async function copyTag() {
-        try {
-          await navigator.clipboard.writeText(desiredTag);
-          showToast(`Discord tag copied: ${desiredTag}`);
-        } catch (err) {
-          const fallback = prompt('Copy Discord tag (Ctrl+C):', desiredTag);
-          if (fallback !== null) showToast('Copied (manual)');
-        }
-      }
-      
-      orb.addEventListener('click', copyTag);
-      discordButtons.forEach(btn => btn.addEventListener('click', copyTag));
-    })();
-
-    // ---------- Mobile menu ----------
-    (function mobileMenu() {
-      const hamburger = $('#hamburger');
-      const mobileMenu = $('#mobile-menu');
-      
-      if (!hamburger || !mobileMenu) return;
-      
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('open');
-      });
-      
-      // Close menu when clicking a link
-      $('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          mobileMenu.classList.remove('open');
-        });
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-          hamburger.classList.remove('active');
-          mobileMenu.classList.remove('open');
-        }
-      });
-    })();
-
-    // ---------- Toast notification ----------
-    function showToast(text, timeout = 2500) {
-      const toast = $('#toast');
-      if (!toast) return;
-      
-      toast.textContent = text;
-      toast.classList.add('show');
-      
-      clearTimeout(toast._hide);
-      toast._hide = setTimeout(() => toast.classList.remove('show'), timeout);
-    }
-
-    // ---------- Particle animation ----------
-    (function particles() {
-      const canvas = $('#particles');
-      if (!canvas) return;
-      
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      let w, h;
-      
-      function resize() {
-        w = canvas.width = canvas.offsetWidth;
-        h = canvas.height = canvas.offsetHeight;
-      }
-      
-      resize();
-      window.addEventListener('resize', resize);
-      
-      class Particle {
-        constructor() {
-          this.x = Math.random() * w;
-          this.y = Math.random() * h;
-          this.vx = (Math.random() - 0.5) * 0.5;
-          this.vy = (Math.random() - 0.5) * 0.5;
-          this.radius = Math.random() * 1.5 + 0.5;
-          this.opacity = Math.random() * 0.5 + 0.2;
-        }
+    <section class="portfolio-section">
+      <h2 class="section-title-main">My Works</h2>
+      <div class="works-grid">
+        <div class="work-item">
+          <video class="work-media" src="your-video1.mp4" controls muted></video>
+          <div class="work-info">
+            <h3 class="work-title">Animal AI System</h3>
+            <p class="work-description">Minecraft-style animal AI built in Roblox using PathfindingService and custom animations.</p>
+          </div>
+        </div>
         
-        update() {
-          this.x += this.vx;
-          this.y += this.vy;
-          
-          if (this.x < 0 || this.x > w) this.vx *= -1;
-          if (this.y < 0 || this.y > h) this.vy *= -1;
-        }
+        <div class="work-item">
+          <video class="work-media" src="your-video2.mp4" controls muted></video>
+          <div class="work-info">
+            <h3 class="work-title">Bow Shop UI</h3>
+            <p class="work-description">Animated bow shop UI system with camera transitions and tweened purchase logic.</p>
+          </div>
+        </div>
         
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(181, 128, 255, ${this.opacity})`;
-          ctx.fill();
-        }
-      }
-      
-      // Create particles
-      for (let i = 0; i < 50; i++) {
-        particles.push(new Particle());
-      }
-      
-      function animate() {
-        ctx.clearRect(0, 0, w, h);
-        
-        particles.forEach(p => {
-          p.update();
-          p.draw();
-        });
-        
-        // Draw connections
-        particles.forEach((p1, i) => {
-          particles.slice(i + 1).forEach(p2 => {
-            const dx = p1.x - p2.x;
-            const dy = p1.y - p2.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            
-            if (dist < 120) {
-              ctx.beginPath();
-              ctx.moveTo(p1.x, p1.y);
-              ctx.lineTo(p2.x, p2.y);
-              ctx.strokeStyle = `rgba(181, 128, 255, ${(1 - dist / 120) * 0.15})`;
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          });
-        });
-        
-        requestAnimationFrame(animate);
-      }
-      
-      animate();
-    })();
+        <div class="work-item">
+          <video class="work-media" src="your-video3.mp4" controls muted></video>
+          <div class="work-info">
+            <h3 class="work-title">NPC Interaction System</h3>
+            <p class="work-description">Dialogue & interaction system with typing effects and camera focus transitions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    // ---------- Smooth scroll ----------
-    $('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
+    <section class="portfolio-section">
+      <h2 class="section-title-main">Services</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">🎮</div>
+          <h3 class="service-title">Roblox Scripting</h3>
+          <p class="service-desc">AI, Pathfinding, and game mechanics that bring your vision to life.</p>
+        </div>
         
-        e.preventDefault();
-        const target = $(href);
+        <div class="service-item">
+          <div class="service-icon">🖥️</div>
+          <h3 class="service-title">UI & UX</h3>
+          <p class="service-desc">Polished UIs with tweened interactions and responsive design.</p>
+        </div>
         
-        if (target) {
-          const offsetTop = target.offsetTop - 80;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+        <div class="service-item">
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-title">System Design</h3>
+          <p class="service-desc">Inventory, progression, and event-driven frameworks.</p>
+        </div>
+      </div>
+    </section>
 
-    // ---------- Ensure visibility on load ----------
-    window.addEventListener('load', () => {
-      $('.fade-up').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.85) {
-          el.classList.add('visible');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+    <section class="portfolio-section">
+      <h2 class="section-title-main">Let's Work Together</h2>
+      <div class="contact-content">
+        <p class="contact-text">Got a project in mind? Whether it's a complex game system or a simple script, I'm here to help bring your ideas to life.</p>
+        <div class="cta-buttons">
+          <button class="cta-btn" onclick="copyDiscord('eclipse_41934')">Discord: eclipse_41934</button>
+          <a class="cta-btn" href="mailto:eclipsedev47@gmail.com">eclipsedev47@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========== UI DESIGNER PORTFOLIO ========== -->
+  <div class="portfolio-page designer-page" id="designer-portfolio">
+    <nav class="portfolio-nav">
+      <button class="back-btn" onclick="goHome()">← Back</button>
+      <div class="nav-name">[UI Designer Name]</div>
+      <div></div>
+    </nav>
+
+    <section class="portfolio-hero">
+      <div class="hero-content-inner">
+        <div class="profile-img">🎨</div>
+        <h1 class="hero-name">[Designer Name]</h1>
+        <h2 class="hero-role">UI/UX Designer</h2>
+        <p class="hero-bio">
+          Passionate about creating beautiful, functional user interfaces that enhance player experience. I specialize in modern design trends, smooth animations, and intuitive user flows that make games feel premium.
+        </p>
+        <div class="cta-buttons">
+          <button class="cta-btn" onclick="copyDiscord('designer_tag')">Contact on Discord</button>
+          <a class="cta-btn" href="mailto:designer@example.com">Send Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section">
+      <h2 class="section-title-main">Design Portfolio</h2>
+      <div class="works-grid">
+        <div class="work-item">
+          <div class="work-media" style="background: linear-gradient(135deg, #ef4444, #fb923c); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🎯</div>
+          <div class
