@@ -17,6 +17,7 @@
       <h1 class="main-logo">Synctri Studios</h1>
       <p class="tagline">WHERE CREATIVITY MEETS EXPERTISE</p>
       <p class="tagline">We’re a creative trio bringing ideas to life — through code, design, and art.</p>
+      <button class="cta-btn" onclick="showAbout()">Learn More About Us</button>
       
       <div class="role-selector">
         <div class="role-card" data-role="scripter">
@@ -283,6 +284,61 @@
         </div>
    </section>
   </div>
+
+  <div class="portfolio-page about-page" id="about-page">
+    <nav class="portfolio-nav">
+      <button class="back-btn" onclick="goHome()">← Back</button>
+      <div class="nav-name">Who We Are</div>
+      <div></div>
+    </nav>
+
+    <section class="portfolio-hero">
+      <div class="hero-content-inner">
+        <div class="profile-img">
+          <img src="./Assets/ProfilePictures/synctri-logo.png" alt="Synctri Studios Logo">
+        </div>
+        <h1 class="hero-name">Synctri Studios</h1>
+        <h2 class="hero-role">A Creative Trio</h2>
+        <p class="hero-bio">
+          We are <b>EclipseVerse</b>, <b>Cephei</b>, and <b>Renyo</b> — three close friends united by our passion for game creation and design.  
+          Together, we formed <b>Synctri Studios</b>, a small but ambitious team offering professional <b>freelance services</b> in scripting, UI design, and 2D art.  
+          <br><br>
+          Our focus right now is helping developers bring their ideas to life — whether it’s complete systems, interfaces, or visuals — all crafted with precision and polish.  
+          In the long run, we aim to expand Synctri into a full-fledged studio, creating our own immersive Roblox experiences.  
+          <b>Synctri Studios</b> is built on collaboration, creativity, and friendship — and we bring that energy into every project we work on.
+        </p>
+      </div>
+    </section>
+
+    <section class="pricing-section">
+      <h2 class="pricing-title">Meet the Team</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <div class="profile-img">
+            <img src="./Assets/ProfilePictures/Michael Kaiser (2).jpeg" alt="EclipseVerse">
+          </div>
+          <h3 class="pricing-type">EclipseVerse</h3>
+          <p class="hero-bio">Lead Scripter & System Architect</p>
+        </div>
+
+        <div class="pricing-card">
+          <div class="profile-img">
+            <img src="./Assets/ProfilePictures/cephei-pfp2.jpg" alt="Cephei">
+          </div>
+          <h3 class="pricing-type">Cephei</h3>
+          <p class="hero-bio">UI Designer & Interface Specialist</p>
+        </div>
+
+        <div class="pricing-card">
+          <div class="profile-img">
+            <img src="./Assets/ProfilePictures/akui.jpg" alt="Renyo">
+          </div>
+          <h3 class="pricing-type">Minami Renyo</h3>
+          <p class="hero-bio">2D Artist & Illustrator</p>
+        </div>
+      </div>
+    </section>
+  </div>
   
   <!-- ========== FEEDBACK SECTION ========== -->
   <section class="feedback-section">
@@ -345,6 +401,13 @@
     function closeImageModal() {
       imageModal.classList.remove("active");
       document.body.style.overflow = "auto";
+    }
+
+    function showAbout() {
+      homePage.style.display = "none";
+      const aboutPage = document.getElementById("about-page");
+      aboutPage.classList.add("active");
+      window.scrollTo(0, 0);
     }
 
     document.addEventListener("keydown", (e) => {
